@@ -17,8 +17,12 @@ Route::apiResource('actor', 'App\Http\Controllers\API\ActorController');
 
 Route::apiResource('movie', 'App\Http\Controllers\API\MovieController');
 
-Route::post('assignactor', 'App\Http\Controllers\API\ActorController@assignactor');
+Route::match(['get', 'post'],'assignactor', 'App\Http\Controllers\API\ActorController@assignactor');
+
+Route::match(['get', 'post'],'unassignactor', 'App\Http\Controllers\API\ActorController@unassignactor');
 
 Route::get('actorsbymovie/{movie}', 'App\Http\Controllers\API\MovieController@actorsbymovie');
 
 Route::get('moviesbyactor/{actor}', 'App\Http\Controllers\API\ActorController@moviesbyactor');
+
+Route::post('result', 'App\Http\Controllers\API\MovieController@result');

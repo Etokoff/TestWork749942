@@ -52,4 +52,15 @@ interface MovieInterface
      * @param integer       $id
      */
     public function actorsByMovie($id);
+
+    /**
+     * Вывод результатов
+     * параметры:
+     * command (list, search, filter)
+     * orderby (field name)
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getResult(Request $request);
 }

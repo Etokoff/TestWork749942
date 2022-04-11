@@ -80,6 +80,10 @@ class ActorController extends Controller
         return $this->actorRepo->assignActorToMovie($request->input('actor'), $request->input('movie'), $request->input('role_name'));
     }
 
+    public function unassignactor(Request $request) {
+        return $this->actorRepo->unassignActorFromMovie($request->input('actor'), $request->input('movie'));
+    }
+
     public function moviesbyactor($id)
     {
         return $this->actorRepo->moviesByActor($id);

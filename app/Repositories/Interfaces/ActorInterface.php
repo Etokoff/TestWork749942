@@ -57,6 +57,15 @@ interface ActorInterface
     public function assignActorToMovie($actor_id, $movie_id, $role_name);
 
     /**
+     * Снятие актера с роли в фильме
+     *
+     * @param $actor_id
+     * @param $movie_id
+     * @return mixed
+     */
+    public function unassignActorFromMovie($actor_id, $movie_id);
+
+    /**
      * Получение фильмов в которых играл актер
      *
      * @param $id

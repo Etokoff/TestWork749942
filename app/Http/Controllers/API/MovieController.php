@@ -85,4 +85,9 @@ class MovieController extends Controller
     {
         return $this->movieRepo->actorsByMovie($id);
     }
+
+    public function result(Request $request)
+    {
+        return $this->movieRepo->getResult($request);
+    }
 }

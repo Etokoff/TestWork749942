@@ -75,18 +75,24 @@ class ActorRepository implements ActorInterface
     public function assignActorToMovie($actor_id, $movie_id, $role_name)
     {
 
-            MovieActor::updateOrCreate(
-                ['movie_id' => $movie_id, 'actor_id' => $actor_id],
-                ['role_name' => $role_name],
-            );
-            return $this->success("Actor assigned to movie", $role_name);
+        MovieActor::updateOrCreate(
+            ['movie_id' => $movie_id, 'actor_id' => $actor_id],
+            ['role_name' => $role_name],
+        );
+        return $this->success("Actor assigned to movie", $role_name);
 
+    }
+
+    public function unassignActorFromMovie($actor_id, $movie_id)
+    {
+
+        MovieActor::where('movie_id', $movie_id)->where('actor_id', $actor_id)->delete();
+        return $this->success("Actor unassigned from movie", $movie_id);
     }
 
     public function moviesByActor($id)
     {
         $movies = Actor::find($id)->movies;
-
         return $this->success('List of movies by Actor', $movies);
     }
 }
