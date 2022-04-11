@@ -1,64 +1,31 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<h2>Установка проекта:</h2>
+<p>1. Клонировать проект</p>
+<p>2. Перейдите в приложение папки. Запустите composer install на вашем cmd или терминале</p>
+<p>3. Скопируйте .env.example файл в .env в корневую папку. Вы можете ввести copy .env.example .env, если используете командную строку Windows или cp .env.example .env, если используете терминал Ubuntu</p>
+<p>4. Откройте файл .env и измените имя базы данных (DB_DATABASE) на то, что у вас есть, имя пользователя (DB_USERNAME) и пароль (DB_PASSWORD) соответствуют вашей конфигурации.</p>
+<p>5. Создайте в файле .env параметр <b>API_KEY</b> и задайте подпись маршрутов. Т.к. <b>API_KEY</b> используется и в GET запросах, он должжен содержать только допустимые в URL символы без пробелов!</p>
+<p>6. Запустить php artisan key:generate</p>
+<p>7. Запустить php artisan migrate -seed</p>
+<table>
+<tr><td>GET|HEAD</td>        <td>api/actor</td>                   <td>- вывести список актеров</td></tr>
+<tr><td>POST</td>            <td>api/actor</td>                   <td>- создать нового актера (обязательный параметр: name)</td></tr>
+<tr><td>GET|HEAD</td>        <td>api/actor/{actor}</td>           <td>- вывести подробную информацию об актере (обязательный параметр: id)</td></tr>
+<tr><td>PUT|PATCH</td>       <td>api/actor/{actor}</td>           <td>- обновить информацию об актере (обязательный параметр: name)</td></tr>
+<tr><td>DELETE</td>          <td>api/actor/{actor}</td>           <td>- удалить записи об актере, включая сводную таблицу (обязательный параметр: id)</td></tr>
+<tr><td>GET|HEAD</td>        <td>api/actorsbymovie/{movie}</td>   <td>- вывести всех актеров, которые учавствуют в фильме (обязательный параметр: id)</td></tr>
+<tr><td>GET|POST|HEAD</td>   <td>api/assignactor</td>             <td>- назначить актера на роль в фильме (обязательный параметр: movie_id, actor_id, role_name)</td></tr>
+<tr><td>GET|POST|HEAD</td>   <td>api/unassignactor</td>           <td>- снять актера с роли в фильме (обязательный параметр: movie_id, actor_id)</td></tr>
+<tr><td>GET|HEAD</td>        <td>api/movie</td>                   <td>- вывести список фильмов</td></tr>
+<tr><td>POST</td>            <td>api/movie</td>                   <td>- создать новый фильм (обязательный параметр: name)</td></tr>
+<tr><td>GET|HEAD</td>        <td>api/movie/{movie}</td>           <td>- вывести подробную информацию про фильм (обязательный параметр: id)</td></tr>
+<tr><td>PUT|PATCH</td>       <td>api/movie/{movie}</td>           <td>- обновить информацию про фильм (обязательный параметр: name)</td></tr>
+<tr><td>DELETE</td>          <td>api/movie/{movie}</td>           <td>- удалить записи про фильм, включая сводную таблицу (обязательный параметр: id)</td></tr>
+<tr><td>GET|HEAD</td>        <td>api/moviesbyactor/{actor}</td>   <td>- вывести все фильмы, в которых учавствует актер (обязательный параметр: id)</td></tr>
+<tr><td>POST</td>            <td>api/result</td>                  <td>- вывести результаты в зависимости от комманды (обязательный параметр: command)
+command можжет принимать 2 значения (list - вывод списка всех фильмов с актерским составом,
+search - включить поиск (доп.параметры: movie - контекстный поиск по названию фильма,
+actor - контекстный поиск по имени актера, возможно комбинировать доп. параметрами),
+orderby - название поля, по которому будет осуществляться сортировка результатов
+(id, name, created_at, updated_at)
+direct - направление сортировки (по-умолчаниию asc) (asc, desc)</td></tr></table>
+<p><b>Важно! Все запросы подписываются ключом apikey!</b></p>                                              
